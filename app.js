@@ -20,7 +20,7 @@ app.post('/ok-login', urlencodedParser, function (req, res) {
 });
 
 app.get('/', (req, res) => {
-  res.send('IT WORKS!!');
+  res.send('El servidor funciona perfectament!!');
   //res.render('pages/index');
 });
 
