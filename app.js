@@ -4,15 +4,9 @@ const mongoClient = require('mongodb');
 require('dotenv').config();
 let app = express();
 app.use(bodyParser.json());
-console.log(process.env.MONGODBURI);
-const uri = process.env.MONGODBURI;//"mongodb+srv://erikcf:erikcf@m06-cabezueloerik-e7cnn.mongodb.net/test?retryWrites=true&w=majority";
+
+const uri = process.env.MONGODBURI;
 const dbName = 'Backstab';
-
-mongoClient.connect(uri, (err, client) =>{
-
-})
-//const client = new mongoClient(uri);
-
 
 const client = new mongoClient(uri);
 
@@ -25,7 +19,7 @@ var PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.send('Ves a /api/collection!');
 });
-
+/*
 mongoClient.connect(uri, (err, client) => {
   if(!err){
     const db = client.db(dbName);
@@ -49,7 +43,7 @@ mongoClient.connect(uri, (err, client) => {
             client.close();
           });
         });*/
-      });
+     /* });
     });
   }
 });
@@ -75,5 +69,5 @@ collections.forEach((col, index, cols) => {
     });
   });
 });
-
+*/
 app.listen(PORT, () => console.log('Backstab està corrent al port ' + PORT + '!'));
