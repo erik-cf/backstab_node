@@ -28,12 +28,12 @@ mongoClient.connect(uri, (err, client) => {
           if(Object.keys(req.query) === 0){
             db.collection(colName).find().toArray((err, docs) => {
               var docsString = JSON.stringify(docs);
-              res.send(`{"docs":{${docsString}}}`);
+              res.json(`{"docs":{${docsString}}}`);
             });
           }else{
             db.collection(colName).find(req.query).toArray((err, docs) => {
               var docsString = JSON.stringify(docs);
-              res.send(`{"docs":{${docsString}}}`);
+              res.json(`{"docs":{${docsString}}}`);
             });
           }
           
