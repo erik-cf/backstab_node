@@ -24,9 +24,11 @@ mongoClient.connect(uri, (err, client) => {
       items.forEach((item) => {
         var colName = item.name;
         app.get('/api/' + colName, (req, res) => {
+          res.set('content-type', 'application/json');
           if(Object.keys(req.query) === 0){
             db.collection(colName).find().toArray((err, docs) => {
-              res.send(docs);
+              var docsString = JSON.stringify(docs);
+              res.send(`{ docs : { ${docsString} } }`);
             });
           }else{
             db.collection(colName).find(req.query).toArray((err, docs) => {
